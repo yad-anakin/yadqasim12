@@ -3,6 +3,11 @@
 import Image from 'next/image';
 import ColorBends from './components/ColorBends';
 import Spline from '@splinetool/react-spline';
+import BlurText from './components/BlurText';
+import ShinyText from './components/ShinyText';
+import CurvedLoop from './components/CurvedLoop';
+import ScrollVelocity from './components/ScrollVelocity';
+import ASCIIText from './components/ASCIIText';
 
 const projects = [
   {
@@ -80,92 +85,107 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/70 to-transparent" />
         <div className="space-y-4 max-w-2xl relative px-4 sm:px-6 md:px-10">
           <p className="text-sm uppercase tracking-[0.35em] text-muted/80">Introduction</p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.4]">
-            Hi, I&apos;m Yad, a developer and a pharmacist
-          </h1>
-          <p className="text-sm sm:text-base text-muted leading-relaxed">
-            also interested in classical literature, art and philosophy
-          </p>
+          <BlurText
+            text="Hi, I'm Yad, a developer and a pharmacist"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.4] justify-center"
+          />
+          <BlurText
+            text="also interested in classical literature, art and philosophy"
+            delay={200}
+            animateBy="words"
+            direction="top"
+            className="text-sm sm:text-base text-muted leading-relaxed justify-center"
+          />
         </div>
       </section>
 
+      {/* Curved marquee */}
+      <section className="mt-4">
+        <CurvedLoop
+          marqueeText="Welcome ✦ to ✦ my ✦ portfolio ✦ and ✦ enjoy ✦"
+          speed={2}
+          curveAmount={400}
+          direction="left"
+          interactive={true}
+        />
+      </section>
+
       {/* Main Hero */}
-      <section className="min-h-[100vh] flex items-center pt-10 md:pt-16">
+      <section className="flex items-center py-10 md:py-16">
         <div className="grid gap-12 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] items-center w-full">
           <div className="space-y-8">
             <p className="text-sm tracking-[0.35em] uppercase text-muted/80">
               Portfolio · Analysis · Experiments
             </p>
-            <p className="max-w-xl text-sm sm:text-base text-muted leading-relaxed">
-              I&apos;m <span className="font-medium text-foreground">Yad Qasim</span>, I build fast, focused interfaces and share the work, experiments, and analysis on ideas that matter to me.
-
+            <p className="max-w-xl text-sm sm:text-base leading-relaxed text-slate-300">
+              I&apos;m{' '}
+              <span className="font-medium text-foreground">Yad Qasim</span>
+              {', '}
+              <ShinyText
+                text="I build fast, focused interfaces and share the work, experiments, and analysis on ideas that matter to me."
+                speed={3}
+              />
             </p>
             <div className="flex flex-wrap gap-4">
               <a
                 href="/projects"
-                className="inline-flex items-center gap-2 rounded-full border border-accent/60 bg-accent/30 px-5 py-2.5 text-sm font-medium text-foreground hover:-translate-y-[1px] hover:bg-accent transition-all duration-200"
+                className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-black/30 px-5 py-2.5 text-sm font-medium text-slate-300 hover:text-slate-100 hover:bg-black/60 hover:border-slate-400 transition-all duration-200"
               >
                 View projects
-                <span className="text-xs text-muted">· shipped & in-progress</span>
+                <span className="text-xs text-slate-400">· shipped & in-progress</span>
               </a>
               <a
                 href="/blog"
-                className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-accent-soft/60 px-5 py-2.5 text-sm text-muted hover:text-foreground hover:border-accent/60 hover:bg-accent-soft transition-all duration-200"
+                className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-black/20 px-5 py-2.5 text-sm text-slate-300 hover:text-slate-100 hover:border-slate-400 hover:bg-black/50 transition-all duration-200"
               >
                 Read analysis
               </a>
             </div>
-            <div className="flex flex-wrap gap-3 pt-4 text-xs text-muted">
-              <span className="rounded-full border border-border/80 bg-black/40 px-3 py-1">
-                Next.js · React · TypeScript
+            <div className="flex flex-wrap gap-3 pt-4 text-xs text-slate-400">
+              <span className="rounded-full border border-border/80 bg-black/40 px-3 py-1 text-slate-400">
+                <ShinyText text="Next.js · React · TypeScript" speed={3} />
               </span>
-              <span className="rounded-full border border-border/80 bg-black/40 px-3 py-1">
-                TailwindCSS · UI/UX
+              <span className="rounded-full border border-border/80 bg-black/40 px-3 py-1 text-slate-400">
+                <ShinyText text="TailwindCSS · UI/UX" speed={3} />
               </span>
-              <span className="rounded-full border border-border/80 bg-black/40 px-3 py-1">
-                Analysis on literature, philosophy & art
+              <span className="rounded-full border border-border/80 bg-black/40 px-3 py-1 text-slate-400">
+                <ShinyText text="Analysis on literature, philosophy & art" speed={3} />
               </span>
             </div>
           </div>
 
-          <div className="relative h-[320px] sm:h-[380px] md:h-[420px]">
-            <div className="relative h-full overflow-hidden rounded-3xl border border-purple-500/30 bg-neutral-950">
+          <div className="relative h-[320px] sm:h-[380px] md:h-[370px] w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
+            <div className="relative h-full overflow-hidden rounded-3xl bg-neutral-950">
               <Spline
                 scene="https://prod.spline.design/PmUY4GMrks9QXHMG/scene.splinecode"
                 className=""
                 style={{ border: 'none' }}
               />
               <div className="pointer-events-none absolute bottom-0 right-0 h-14 w-40 bg-black/95 flex items-center justify-center px-2">
-              <span className="text-[10px] text-muted text-center leading-snug">
-                Interactive space · hover to interact
-              </span>
-            </div>
+                <span className="text-[10px] text-muted text-center leading-snug">
+                  Interactive space · hover to interact
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Interstitial Spline */}
-      <section className="mt-8 mb-8 -mx-4 md:-mx-8 lg:-mx-12">
-        <div className="relative h-[320px] sm:h-[360px] md:h-[400px] w-full overflow-hidden bg-black flex items-center justify-center">
-          <div className="relative h-[260px] sm:h-[320px] md:h-[360px] w-full max-w-5xl mx-auto">
-            <Spline
-              scene="https://prod.spline.design/tfqnNc8ywQ3WL2g8/scene.splinecode"
-              className="w-full h-full"
-              style={{ border: 'none' }}
-            />
-            <div className="pointer-events-none absolute bottom-0 right-0 h-14 w-40 bg-black/95 flex items-center justify-center px-2">
-              <span className="text-[10px] text-muted text-center leading-snug">
-                Interactive space · hover to interact
-              </span>
-            </div>
-          </div>
-        </div>
+      {/* Scroll velocity text */}
+      <section className="mt-2">
+        <ScrollVelocity
+          texts={["Yad Qasim", "portfolio"]}
+          velocity={30}
+          className="px-3 text-slate-300"
+        />
       </section>
 
       {/* Stack & Preview */}
       <section className="mt-8 py-10 md:py-16">
-        <div className="grid gap-12 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] items-center w-full">
+        <div className="grid gap-12 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-center w-full">
           <div className="space-y-3 text-sm text-muted max-w-xl">
             <h3 className="text-base sm:text-lg font-medium text-foreground">
               About this portfolio & tech stack
@@ -187,7 +207,7 @@ export default function Home() {
             <div className="mt-4 flex flex-wrap gap-3">
               <div className="flex items-center gap-2 rounded-xl border border-border/70 bg-black/40 px-3 py-2 text-xs">
                 <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-white/5">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256"><defs><linearGradient id="SVGkw9x5bVJ" x1="55.633%" x2="83.228%" y1="56.385%" y2="96.08%"><stop offset="0%" stop-color="#FFF"/><stop offset="100%" stop-color="#FFF" stop-opacity="0"/></linearGradient><linearGradient id="SVGE3ljGbCT" x1="50%" x2="49.953%" y1="0%" y2="73.438%"><stop offset="0%" stop-color="#FFF"/><stop offset="100%" stop-color="#FFF" stop-opacity="0"/></linearGradient><circle id="SVGMFHNZdYm" cx="128" cy="128" r="128"/></defs><mask id="SVGalfYF1HT" fill="#fff"><use href="#SVGMFHNZdYm"/></mask><g mask="url(#SVGalfYF1HT)"><circle cx="128" cy="128" r="128"/><path fill="url(#SVGkw9x5bVJ)" d="M212.634 224.028L98.335 76.8H76.8v102.357h17.228V98.68L199.11 234.446a128 128 0 0 0 13.524-10.418"/><path fill="url(#SVGE3ljGbCT)" d="M163.556 76.8h17.067v102.4h-17.067z"/></g></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256"><defs><linearGradient id="SVGkw9x5bVJ" x1="55.633%" x2="83.228%" y1="56.385%" y2="96.08%"><stop offset="0%" stopColor="#FFF"/><stop offset="100%" stopColor="#FFF" stopOpacity="0"/></linearGradient><linearGradient id="SVGE3ljGbCT" x1="50%" x2="49.953%" y1="0%" y2="73.438%"><stop offset="0%" stopColor="#FFF"/><stop offset="100%" stopColor="#FFF" stopOpacity="0"/></linearGradient><circle id="SVGMFHNZdYm" cx="128" cy="128" r="128"/></defs><mask id="SVGalfYF1HT" fill="#fff"><use href="#SVGMFHNZdYm"/></mask><g mask="url(#SVGalfYF1HT)"><circle cx="128" cy="128" r="128"/><path fill="url(#SVGkw9x5bVJ)" d="M212.634 224.028L98.335 76.8H76.8v102.357h17.228V98.68L199.11 234.446a128 128 0 0 0 13.524-10.418"/><path fill="url(#SVGE3ljGbCT)" d="M163.556 76.8h17.067v102.4h-17.067z"/></g></svg>
                 </div>
                 <span className="text-muted">Next.js</span>
               </div>
@@ -205,7 +225,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-2 rounded-xl border border-border/70 bg-black/40 px-3 py-2 text-xs">
                 <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-cyan-500/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 154"><defs><linearGradient id="SVG80JqDb2a" x1="-2.778%" x2="100%" y1="32%" y2="67.556%"><stop offset="0%" stop-color="#2298BD"/><stop offset="100%" stop-color="#0ED7B5"/></linearGradient></defs><path fill="url(#SVG80JqDb2a)" d="M128 0Q76.8 0 64 51.2Q83.2 25.6 108.8 32c9.737 2.434 16.697 9.499 24.401 17.318C145.751 62.057 160.275 76.8 192 76.8q51.2 0 64-51.2q-19.2 25.6-44.8 19.2c-9.737-2.434-16.697-9.499-24.401-17.318C174.249 14.743 159.725 0 128 0M64 76.8q-51.2 0-64 51.2q19.2-25.6 44.8-19.2c9.737 2.434 16.697 9.499 24.401 17.318C81.751 138.857 96.275 153.6 128 153.6q51.2 0 64-51.2q-19.2 25.6-44.8 19.2c-9.737-2.434-16.697-9.499-24.401-17.318C110.249 91.543 95.725 76.8 64 76.8"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 154"><defs><linearGradient id="SVG80JqDb2a" x1="-2.778%" x2="100%" y1="32%" y2="67.556%"><stop offset="0%" stopColor="#2298BD"/><stop offset="100%" stopColor="#0ED7B5"/></linearGradient></defs><path fill="url(#SVG80JqDb2a)" d="M128 0Q76.8 0 64 51.2Q83.2 25.6 108.8 32c9.737 2.434 16.697 9.499 24.401 17.318C145.751 62.057 160.275 76.8 192 76.8q51.2 0 64-51.2q-19.2 25.6-44.8 19.2c-9.737-2.434-16.697-9.499-24.401-17.318C174.249 14.743 159.725 0 128 0M64 76.8q-51.2 0-64 51.2q19.2-25.6 44.8-19.2c9.737 2.434 16.697 9.499 24.401 17.318C81.751 138.857 96.275 153.6 128 153.6q51.2 0 64-51.2q-19.2 25.6-44.8 19.2c-9.737-2.434-16.697-9.499-24.401-17.318C110.249 91.543 95.725 76.8 64 76.8"/></svg>
                 </div>
                 <span className="text-muted">TailwindCSS</span>
               </div>
@@ -222,7 +242,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-2 rounded-xl border border-border/70 bg-black/40 px-3 py-2 text-xs">
                 <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-500/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 292"><defs><linearGradient id="SVGn7WyXdQM" x1="68.188%" x2="27.823%" y1="17.487%" y2="89.755%"><stop offset="0%" stop-color="#41873F"/><stop offset="32.88%" stop-color="#418B3D"/><stop offset="63.52%" stop-color="#419637"/><stop offset="93.19%" stop-color="#3FA92D"/><stop offset="100%" stop-color="#3FAE2A"/></linearGradient><linearGradient id="SVGYUHp3cUc" x1="43.277%" x2="159.245%" y1="55.169%" y2="-18.306%"><stop offset="13.76%" stop-color="#41873F"/><stop offset="40.32%" stop-color="#54A044"/><stop offset="71.36%" stop-color="#66B848"/><stop offset="90.81%" stop-color="#6CC04A"/></linearGradient><linearGradient id="SVGsgCB2mOc" x1="-4.389%" x2="101.499%" y1="49.997%" y2="49.997%"><stop offset="9.192%" stop-color="#6CC04A"/><stop offset="28.64%" stop-color="#66B848"/><stop offset="59.68%" stop-color="#54A044"/><stop offset="86.24%" stop-color="#41873F"/></linearGradient><path id="SVGsibSecQa" d="M134.923 1.832c-4.344-2.443-9.502-2.443-13.846 0L6.787 67.801C2.443 70.244 0 74.859 0 79.745v132.208c0 4.887 2.715 9.502 6.787 11.945l114.29 65.968c4.344 2.444 9.502 2.444 13.846 0l114.29-65.968c4.344-2.443 6.787-7.058 6.787-11.945V79.745c0-4.886-2.715-9.501-6.787-11.944z"/></defs><path fill="url(#SVGn7WyXdQM)" d="M134.923 1.832c-4.344-2.443-9.502-2.443-13.846 0L6.787 67.801C2.443 70.244 0 74.859 0 79.745v132.208c0 4.887 2.715 9.502 6.787 11.945l114.29 65.968c4.344 2.444 9.502 2.444 13.846 0l114.29-65.968c4.344-2.443 6.787-7.058 6.787-11.945V79.745c0-4.886-2.715-9.501-6.787-11.944z"/><mask id="SVGeWYJ7d8R" fill="#fff"><use href="#SVGsibSecQa"/></mask><path fill="url(#SVGYUHp3cUc)" d="M249.485 67.8L134.65 1.833c-1.086-.542-2.443-1.085-3.529-1.357L2.443 220.912c1.086 1.357 2.444 2.443 3.8 3.258l114.834 65.968c3.258 1.9 7.059 2.443 10.588 1.357L252.47 70.515c-.815-1.086-1.9-1.9-2.986-2.714" mask="url(#SVGeWYJ7d8R)"/><path fill="url(#SVGsgCB2mOc)" d="M249.756 223.898c3.258-1.9 5.701-5.158 6.787-8.687L130.579.204c-3.258-.543-6.787-.272-9.773 1.628L6.786 67.53l122.979 224.238c1.628-.272 3.529-.815 5.158-1.63z" mask="url(#SVGeWYJ7d8R)"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 292"><defs><linearGradient id="SVGn7WyXdQM" x1="68.188%" x2="27.823%" y1="17.487%" y2="89.755%"><stop offset="0%" stopColor="#41873F"/><stop offset="32.88%" stopColor="#418B3D"/><stop offset="63.52%" stopColor="#419637"/><stop offset="93.19%" stopColor="#3FA92D"/><stop offset="100%" stopColor="#3FAE2A"/></linearGradient><linearGradient id="SVGYUHp3cUc" x1="43.277%" x2="159.245%" y1="55.169%" y2="-18.306%"><stop offset="13.76%" stopColor="#41873F"/><stop offset="40.32%" stopColor="#54A044"/><stop offset="71.36%" stopColor="#66B848"/><stop offset="90.81%" stopColor="#6CC04A"/></linearGradient><linearGradient id="SVGsgCB2mOc" x1="-4.389%" x2="101.499%" y1="49.997%" y2="49.997%"><stop offset="9.192%" stopColor="#6CC04A"/><stop offset="28.64%" stopColor="#66B848"/><stop offset="59.68%" stopColor="#54A044"/><stop offset="86.24%" stopColor="#41873F"/></linearGradient><path id="SVGsibSecQa" d="M134.923 1.832c-4.344-2.443-9.502-2.443-13.846 0L6.787 67.801C2.443 70.244 0 74.859 0 79.745v132.208c0 4.887 2.715 9.502 6.787 11.945l114.29 65.968c4.344 2.444 9.502 2.444 13.846 0l114.29-65.968c4.344-2.443 6.787-7.058 6.787-11.945V79.745c0-4.886-2.715-9.501-6.787-11.944z"/></defs><path fill="url(#SVGn7WyXdQM)" d="M134.923 1.832c-4.344-2.443-9.502-2.443-13.846 0L6.787 67.801C2.443 70.244 0 74.859 0 79.745v132.208c0 4.887 2.715 9.502 6.787 11.945l114.29 65.968c4.344 2.444 9.502 2.444 13.846 0l114.29-65.968c4.344-2.443 6.787-7.058 6.787-11.945V79.745c0-4.886-2.715-9.501-6.787-11.944z"/><mask id="SVGeWYJ7d8R" fill="#fff"><use href="#SVGsibSecQa"/></mask><path fill="url(#SVGYUHp3cUc)" d="M249.485 67.8L134.65 1.833c-1.086-.542-2.443-1.085-3.529-1.357L2.443 220.912c1.086 1.357 2.444 2.443 3.8 3.258l114.834 65.968c3.258 1.9 7.059 2.443 10.588 1.357L252.47 70.515c-.815-1.086-1.9-1.9-2.986-2.714" mask="url(#SVGeWYJ7d8R)"/><path fill="url(#SVGsgCB2mOc)" d="M249.756 223.898c3.258-1.9 5.701-5.158 6.787-8.687L130.579.204c-3.258-.543-6.787-.272-9.773 1.628L6.786 67.53l122.979 224.238c1.628-.272 3.529-.815 5.158-1.63z" mask="url(#SVGeWYJ7d8R)"/></svg>
                 </div>
                 <span className="text-muted">Node.js</span>
               </div>
@@ -264,7 +284,8 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-2 rounded-xl border border-border/70 bg-black/40 px-3 py-2 text-xs">
                 <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-500/15">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 263"><defs><linearGradient id="SVGvhlZesRv" x1="20.862%" x2="63.426%" y1="20.687%" y2="44.071%"><stop offset="0%" stop-color="#249361"/><stop offset="100%" stop-color="#3ECF8E"/></linearGradient><linearGradient id="SVGDD1qBdAT" x1="1.991%" x2="21.403%" y1="-13.158%" y2="34.708%"><stop offset="0%"/><stop offset="100%" stop-opacity="0"/></linearGradient></defs><path fill="url(#SVGvhlZesRv)" d="M149.602 258.579c-6.718 8.46-20.338 3.824-20.5-6.977l-2.367-157.984h106.229c19.24 0 29.971 22.223 18.007 37.292z"/><path fill="url(#SVGDD1qBdAT)" fill-opacity=".2" d="M149.602 258.579c-6.718 8.46-20.338 3.824-20.5-6.977l-2.367-157.984h106.229c19.24 0 29.971 22.223 18.007 37.292z"/><path fill="#3ECF8E" d="M106.399 4.37c6.717-8.461 20.338-3.826 20.5 6.976l1.037 157.984H23.037c-19.241 0-29.973-22.223-18.008-37.292z"/></svg>                </div>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 263"><defs><linearGradient id="SVGvhlZesRv" x1="20.862%" x2="63.426%" y1="20.687%" y2="44.071%"><stop offset="0%" stopColor="#249361"/><stop offset="100%" stopColor="#3ECF8E"/></linearGradient><linearGradient id="SVGDD1qBdAT" x1="1.991%" x2="21.403%" y1="-13.158%" y2="34.708%"><stop offset="0%"/><stop offset="100%" stopOpacity="0"/></linearGradient></defs><path fill="url(#SVGvhlZesRv)" d="M149.602 258.579c-6.718 8.46-20.338 3.824-20.5-6.977l-2.367-157.984h106.229c19.24 0 29.971 22.223 18.007 37.292z"/><path fill="url(#SVGDD1qBdAT)" fillOpacity=".2" d="M149.602 258.579c-6.718 8.46-20.338 3.824-20.5-6.977l-2.367-157.984h106.229c19.24 0 29.971 22.223 18.007 37.292z"/><path fill="#3ECF8E" d="M106.399 4.37c6.717-8.461 20.338-3.826 20.5 6.976l1.037 157.984H23.037c-19.241 0-29.973-22.223-18.008-37.292z"/></svg>
+                </div>
                 <span className="text-muted">Supabase</span>
               </div>
               <div className="flex items-center gap-2 rounded-xl border border-border/70 bg-black/40 px-3 py-2 text-xs">
@@ -275,18 +296,10 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="relative h-[320px] sm:h-[380px] md:h-[420px]">
-            <div className="relative h-full overflow-hidden rounded-3xl border border-purple-500/30 bg-neutral-950">
-              <Spline
-                scene="https://prod.spline.design/e1Fg3xXeuxkNZ0pW/scene.splinecode"
-                className=""
-                style={{ border: 'none' }}
-              />
-              <div className="pointer-events-none absolute bottom-0 right-0 h-14 w-40 bg-black/95 flex items-center justify-center px-2">
-                <span className="text-[10px] text-muted text-center leading-snug">
-                  Interactive space · hover and drag to interact
-                </span>
-              </div>
+
+          <div className="relative h-[280px] sm:h-[300px] md:h-[320px] w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
+            <div className="relative h-full overflow-hidden rounded-3xl bg-black">
+              <ASCIIText text="Yad" enableWaves={true} asciiFontSize={8} planeBaseHeight={12} />
             </div>
           </div>
         </div>

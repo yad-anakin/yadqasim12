@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import './globals.css';
 import { Inter } from 'next/font/google';
+import GradualBlur from './components/GradualBlur';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -52,6 +53,8 @@ export default function RootLayout({
             </footer>
           </div>
         </div>
+        <GradualBlur preset="page-header" animated={false} responsive opacity={1} />
+        <GradualBlur preset="page-footer" animated={false} responsive opacity={1} />
       </body>
     </html>
   );

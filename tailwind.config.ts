@@ -28,6 +28,15 @@ const config: Config = {
         'radial-grid':
           'radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.18) 1px, transparent 0)',
       },
+      keyframes: {
+        shine: {
+          '0%': { backgroundPosition: '100%' },
+          '100%': { backgroundPosition: '-100%' },
+        },
+      },
+      animation: {
+        shine: 'shine 5s linear infinite',
+      },
     },
   },
   plugins: [],
